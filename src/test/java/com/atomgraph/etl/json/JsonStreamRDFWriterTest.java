@@ -42,7 +42,7 @@ public class JsonStreamRDFWriterTest
         
         Model expected = ModelFactory.createDefaultModel();
         
-        assertIsomorphic(json, getNS(), expected);
+        assertIsomorphic(json, expected);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class JsonStreamRDFWriterTest
         expected.createResource().
                 addLiteral(expected.createProperty(getNS(), "key"), "val");
         
-        assertIsomorphic(json, getNS(), expected);
+        assertIsomorphic(json, expected);
     }
     
     @Test
@@ -69,7 +69,7 @@ public class JsonStreamRDFWriterTest
                 addLiteral(expected.createProperty(getNS(), "key"), "val3").
                 addLiteral(expected.createProperty(getNS(), "key"), "val4");
         
-        assertIsomorphic(json, getNS(), expected);
+        assertIsomorphic(json, expected);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class JsonStreamRDFWriterTest
                         addLiteral(expected.createProperty(getNS(), "key"), "val")).
                 addLiteral(expected.createProperty(getNS(), "after"), "val");
         
-        assertIsomorphic(json, getNS(), expected);
+        assertIsomorphic(json, expected);
     }
 
     @Test
@@ -102,7 +102,7 @@ public class JsonStreamRDFWriterTest
                         addLiteral(expected.createProperty(getNS(), "key1"), "val1")).
                 addLiteral(expected.createProperty(getNS(), "array"), "after");
         
-        assertIsomorphic(json, getNS(), expected);
+        assertIsomorphic(json, expected);
     }
 
     @Test
@@ -118,7 +118,7 @@ public class JsonStreamRDFWriterTest
                         addLiteral(expected.createProperty(getNS(), "key"), "val")).
                 addLiteral(expected.createProperty(getNS(), "array"), "after");
         
-        assertIsomorphic(json, getNS(), expected);
+        assertIsomorphic(json, expected);
     }
     
     @Test
@@ -133,7 +133,7 @@ public class JsonStreamRDFWriterTest
                 addLiteral(expected.createProperty(getNS(), "int"), Integer.valueOf("42")).
                 addLiteral(expected.createProperty(getNS(), "float"), Float.valueOf("66.6"));
         
-        assertIsomorphic(json, getNS(), expected);
+        assertIsomorphic(json, expected);
     }
 
     @Test
@@ -143,12 +143,12 @@ public class JsonStreamRDFWriterTest
         
         Model expected = ModelFactory.createDefaultModel();
         
-        assertIsomorphic(json, getNS(), expected);
+        assertIsomorphic(json, expected);
     }
 
-    public static void assertIsomorphic(String json, String base, Model expected)
+    public void assertIsomorphic(String json, Model expected)
     {
-        assertIsomorphic(getJsonParser(json), base, expected);
+        assertIsomorphic(getJsonParser(json), getNS(), expected);
     }
 
     public static void assertIsomorphic(JsonParser jsonParser, String base, Model expected)

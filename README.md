@@ -133,4 +133,6 @@ Hardware: x64 Windows 10 PC with Intel Core i5-7200U 2.5 GHz CPU and 16 GB RAM.
 
 ## Dependencies
 
+* [javax.json](https://mvnrepository.com/artifact/org.glassfish/javax.json)
 * [Apache Jena](https://jena.apache.org/)
+* [picocli](https://picocli.info)
