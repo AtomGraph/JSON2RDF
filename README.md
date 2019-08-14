@@ -12,10 +12,9 @@ That should produce an executable JAR file `target/json2rdf-2.0.0-SNAPSHOT-jar-w
 The JSON data is read from `stdin`, the resulting RDF data is written to `stdout`.
 
 Parameters:
-* `base` - the base URI for the data (also becomes the `BASE` URI of the SPARQL query)
+* `base` - the base URI for the data
 
 Options:
-* `--query-file` - a text file with SPARQL 1.1 [`CONSTRUCT`](https://www.w3.org/TR/sparql11-query/#construct) query string
 * `--input-charset` - JSON input encoding, by default UTF-8
 * `--output-charset` - RDF output encoding, by default UTF-8
 
@@ -129,9 +128,8 @@ Output
 
 ## Performance
 
-### Without transformation
-
-Largest dataset tested so far: 2.95 GB / 30459482 lines of JSON to 4.5 GB / 21964039 triples in 2m10s. Hardware: x64 Windows 10 PC with Intel Core i5-7200U 2.5 GHz CPU and 16 GB RAM.
+Largest dataset tested so far: 2.95 GB / 30459482 lines of JSON to 4.5 GB / 21964039 triples in 2m10s.
+Hardware: x64 Windows 10 PC with Intel Core i5-7200U 2.5 GHz CPU and 16 GB RAM.
 
 ## Dependencies
 
