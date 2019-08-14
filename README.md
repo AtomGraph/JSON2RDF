@@ -27,7 +27,8 @@ Input [`ordinary-json-document.json`](https://www.w3.org/TR/json-ld11/#interpret
   "name": "Markus Lanthaler",
   "homepage": "http://www.markus-lanthaler.com/",
   "image": "http://twitter.com/account/profile_image/markuslanthaler"
-}```
+}
+```
 
 Command
 
@@ -43,6 +44,37 @@ Output
 ```
 
 Input [`city-distances.json`](https://www.w3.org/TR/xslt-30/#json-to-xml-mapping)
+
+```json
+{
+  "desc"    : "Distances between several cities, in kilometers.",
+  "updated" : "2014-02-04T18:50:45",
+  "uptodate": true,
+  "author"  : null,
+  "cities"  : {
+    "Brussels": [
+      {"to": "London",    "distance": 322},
+      {"to": "Paris",     "distance": 265},
+      {"to": "Amsterdam", "distance": 173}
+    ],
+    "London": [
+      {"to": "Brussels",  "distance": 322},
+      {"to": "Paris",     "distance": 344},
+      {"to": "Amsterdam", "distance": 358}
+    ],
+    "Paris": [
+      {"to": "Brussels",  "distance": 265},
+      {"to": "London",    "distance": 344},
+      {"to": "Amsterdam", "distance": 431}
+    ],
+    "Amsterdam": [
+      {"to": "Brussels",  "distance": 173},
+      {"to": "London",    "distance": 358},
+      {"to": "Paris",     "distance": 431}
+    ]
+  }
+}
+```
 
 Command
 
