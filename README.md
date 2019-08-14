@@ -78,7 +78,7 @@ Input [`city-distances.json`](https://www.w3.org/TR/xslt-30/#json-to-xml-mapping
 
 Command
 
-    cat cities.json | java -jar JSON2RDF-1.0.0-SNAPSHOT-jar-with-dependencies.jar https://localhost/ | riot --formatted=TURTLE
+    cat city-distances.json | java -jar JSON2RDF-1.0.0-SNAPSHOT-jar-with-dependencies.jar https://localhost/ | riot --formatted=TURTLE
 
 
 Output
