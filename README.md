@@ -7,6 +7,7 @@ The resulting RDF representation is lossless with the exception of array orderin
 The lost ordering should not be a problem in the majority of cases, as RDF applications tend to impose their own value-based ordering using SPARQL `ORDER BY`.
 
 A common use case is feeding the JSON2RDF output into a triplestore or SPARQL processor and using a SPARQL `CONSTRUCT` query to map the generic RDF to more specific RDF that uses terms from some vocabulary.
+SPARQL is an inherently more flexible RDF mapping mechanism than JSON-LD `@context`.
 
 ## Build
 
@@ -58,6 +59,37 @@ Turtle output
 [ <https://localhost/#homepage>  "http://www.markus-lanthaler.com/" ;
   <https://localhost/#image>     "http://twitter.com/account/profile_image/markuslanthaler" ;
   <https://localhost/#name>      "Markus Lanthaler"
+] .
+```
+
+The following SPARQL query can be used to map this generic RDF to the desired target RDF, e.g. a structure that uses [schema.org](https://schema.org) vocabulary.
+
+```sparql
+BASE <https://localhost/>
+PREFIX : <#>
+PREFIX schema: <http://schema.org/>
+
+CONSTRUCT
+{
+  ?person schema:homepage ?homepage ;
+    schema:image ?image ;
+    schema:name ?name .
+}
+{
+  ?person :homepage ?homepageStr ;
+    :image ?imageStr ;
+    :name ?name .
+  BIND (URI(?homepageStr) AS ?homepage)
+  BIND (URI(?imageStr) AS ?image)
+}
+```
+
+Turtle output after the mapping
+
+```turtle
+[ <http://schema.org/homepage>  <http://www.markus-lanthaler.com/> ;
+  <http://schema.org/image>     <http://twitter.com/account/profile_image/markuslanthaler> ;
+  <http://schema.org/name>      "Markus Lanthaler"
 ] .
 ```
 
