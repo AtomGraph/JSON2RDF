@@ -62,7 +62,6 @@ public class JsonStreamRDFWriter
     public void convert()
     {
         getStreamRDF().start();
-        getStreamRDF().base(getIRIResolver().getBaseIRIasString());
         
         write(getParser(), getStreamRDF(), getIRIResolver());
         
