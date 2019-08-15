@@ -1,6 +1,13 @@
 # JSON2RDF
 Streaming generic JSON to RDF converter
 
+Reads JSON data and streams N-Triples output. The conversion algorithm is similar to that of [JSON-LD](https://www.w3.org/TR/json-ld11-api/) but accepts arbitrary JSON and does not require a `@context`.
+
+The resulting RDF representation is lossless with the exception of array ordering and some [datatype round-tripping](https://www.w3.org/TR/json-ld11-api/#data-round-tripping).
+The lost ordering should not be a problem in the majority of cases, as RDF applications tend to impose their own value-based ordering using SPARQL `ORDER BY`.
+
+A common use case is feeding the JSON2RDF output into a triplestore or SPARQL processor and using a SPARQL `CONSTRUCT` query to map the generic RDF to more specific RDF that uses terms from some vocabulary.
+
 ## Build
 
     mvn clean install
