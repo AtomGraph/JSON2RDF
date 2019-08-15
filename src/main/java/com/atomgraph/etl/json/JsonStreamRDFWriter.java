@@ -79,7 +79,7 @@ public class JsonStreamRDFWriter
         {
             JsonParser.Event event = parser.next();
 
-            switch(event)
+            switch (event)
             {
                 case START_ARRAY:
                     if (!subjectStack.isEmpty() && property != null) arrayProperties.put(subjectStack.getLast(), property);
