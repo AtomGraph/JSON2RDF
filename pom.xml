@@ -6,6 +6,38 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     
+    <name>JSON2RDF</name>
+    <description>Streaming generic JSON to RDF converter</description>
+    <url>https://github.com/AtomGraph/JSON2RDF</url>
+    <inceptionYear>2019</inceptionYear>
+    
+    <developers>
+        <developer>
+            <id>namedgraph</id>
+            <email>martynas@atomgraph.com</email>
+            <roles>
+                <role>Developer</role>
+                <role>Founder</role>
+            </roles>
+            <organization>AtomGraph</organization>
+            <organizationUrl>https://atomgraph.com</organizationUrl>
+        </developer>
+    </developers>
+    
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <scm>
+        <url>https://github.com/AtomGraph/JSON2RDF</url>
+        <connection>scm:git:git://github.com/AtomGraph/JSON2RDF.git</connection>
+        <developerConnection>scm:git:git@github.com:AtomGraph/JSON2RDF</developerConnection>
+    </scm>
+    
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
