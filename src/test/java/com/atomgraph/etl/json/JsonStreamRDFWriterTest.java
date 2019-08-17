@@ -19,6 +19,7 @@ import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
 import javax.json.Json;
 import javax.json.stream.JsonParser;
+import javax.json.stream.JsonParsingException;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.system.StreamRDFLib;
@@ -34,7 +35,17 @@ public class JsonStreamRDFWriterTest
     
     private static final String BASE = "http://localhost/";
     private static final String NS = BASE + "#";
-    
+
+    @Test(expected = JsonParsingException.class)
+    public void testInvalid()
+    {
+        String json = "{ ";
+        
+        Model expected = ModelFactory.createDefaultModel();
+        
+        assertIsomorphic(json, expected);
+    }
+
     @Test
     public void testEmpty()
     {
