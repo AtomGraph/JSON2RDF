@@ -34,6 +34,10 @@ JSON2RDF output is streaming and produces N-Triples, therefore we pipe it throug
 
 ***
 
+Bob DuCharme's blog post on using JSON2RDF: [Converting JSON to RDF](http://www.bobdc.com/blog/json2rdf/).
+
+***
+
 JSON data in [`ordinary-json-document.json`](https://www.w3.org/TR/json-ld11/#interpreting-json-as-json-ld)
 ```json
 {
