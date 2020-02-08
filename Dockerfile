@@ -10,4 +10,4 @@ RUN mvn clean install
 
 ### entrypoint
 
-ENTRYPOINT ["java", "-jar", "target/json2rdf-1.0.0-SNAPSHOT-jar-with-dependencies.jar"]
+ENTRYPOINT ["java", "-jar", "target/json2rdf-1.0.1-jar-with-dependencies.jar"]
