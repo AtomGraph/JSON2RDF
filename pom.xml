@@ -73,6 +73,7 @@
     </dependencies>
     
     <build>
+        <finalName>json2rdf</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
