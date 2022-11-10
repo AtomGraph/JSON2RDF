@@ -205,15 +205,23 @@ PREFIX dct:     <http://purl.org/dc/terms/>
 
 CONSTRUCT
 {
-    ?tweet sioc:id ?id ;
+    ?tweet a sioc:Post ;
+        sioc:id ?id ;
+        dct:created ?created ;
         sioc:content ?full_text ;
-        dct:created ?created .
+        sioc:reply_of ?reply_of .
 }
 {
     ?tweet_obj :id ?id ;
         :created_at ?created_at_string ;
         :full_text ?full_text ;
         :lang ?lang .
+    OPTIONAL
+    {
+        ?tweet_obj :in_reply_to_status_id ?in_reply_to_status_id ;
+            :in_reply_to_screen_name ?in_reply_to_screen_name .
+        BIND(URI(CONCAT(?in_reply_to_screen_name, "/status/", ?in_reply_to_status_id)) AS ?reply_of)
+    }
 
     BIND("atomgraphhq" AS ?username)
     BIND(URI(CONCAT(?username, "/status/", ?id)) AS ?tweet)
