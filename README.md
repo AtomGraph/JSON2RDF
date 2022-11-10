@@ -208,13 +208,13 @@ CONSTRUCT
     ?tweet a sioc:Post ;
         sioc:id ?id ;
         dct:created ?created ;
-        sioc:content ?full_text ;
+        sioc:content ?content ;
         sioc:reply_of ?reply_of .
 }
 {
     ?tweet_obj :id ?id ;
         :created_at ?created_at_string ;
-        :full_text ?full_text .
+        :full_text ?content .
     OPTIONAL
     {
         ?tweet_obj :in_reply_to_status_id ?in_reply_to_status_id ;
