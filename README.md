@@ -185,6 +185,63 @@ Turtle output
   <https://localhost/#uptodate>  true
 ] .
 ```
+### Mapping Twitter export to RDF
+
+You can [download your Twitter data](https://twitter.com/settings/download_your_data) which includes tweets in `tweets.js`. Remove the `window.YTD.tweets.part0 = ` string and save the rest as `tweets.json`.
+
+To get RDF output, save the following query as `tweets.rq`
+
+```sparql
+BASE            <https://localhost/>
+PREFIX :        <#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sioc:    <http://rdfs.org/sioc/ns#>
+PREFIX dct:     <http://purl.org/dc/terms/>
+
+CONSTRUCT
+{
+    ?tweet sioc:id ?id ;
+        sioc:content ?full_text ;
+        dct:created ?created .
+}
+{
+    ?tweet_obj :id ?id ;
+        :created_at ?created_at_string ;
+        :full_text ?full_text ;
+        :lang ?lang .
+
+    BIND("atomgraphhq" AS ?username)
+    BIND(URI(CONCAT("https://twitter.com/", ?username, "/status/", ?id)) AS ?tweet)
+    BIND(SUBSTR(?created_at_string, 27, 4) AS ?year_string)
+    BIND(SUBSTR(?created_at_string, 5, 3) AS ?month_string)
+    BIND(SUBSTR(?created_at_string, 9, 2) AS ?day_string)
+    VALUES (?month_string ?month_number_string)
+    {
+         ("Jan"    "01")
+         ("Feb"    "02")
+         ("Mar"    "03")
+         ("Apr"    "04")
+         ("May"    "05")
+         ("Jun"    "06")
+         ("Jul"    "07")
+         ("Aug"    "08")
+         ("Sep"    "09")
+         ("Oct"    "10")
+         ("Nov"    "11")
+         ("Dec"    "12")
+    }
+    BIND(SUBSTR(?created_at_string, 12, 8) AS ?time)
+    BIND(SUBSTR(?created_at_string, 21, 3) AS ?tz_hours)
+    BIND(SUBSTR(?created_at_string, 24, 2) AS ?tz_minutes)
+    BIND(STRDT(CONCAT(?year_string, "-", ?month_number_string, "-", ?day_string, "T", ?time, ?tz_hours, ":", ?tz_minutes), xsd:dateTime) AS ?created)
+}
+```
+adjust your Twitter handle in the query string as `?username`, and then run this command:
+```bash
+cat twitter.json | docker run -i -a stdin -a stdout -a stderr atomgraph/json2rdf https://localhost/ > tweets.nt && \
+    sparql --data tweets.nt --query tweets.rq
+```
+Improvements to the mapping query are welcome.
 
 ## Performance
 
