@@ -256,10 +256,12 @@ cat twitter.json | docker run -i -a stdin -a stdout -a stderr atomgraph/json2rdf
 ```
 Output sample:
 ```turtle
-<https://twitter.com/atomgraphhq/status/1589945877245808640>
-        dct:created   "2022-11-08T11:40:11+00:00"^^xsd:dateTime ;
-        sioc:content  "This is big!💥 LinkedDataHub now available on the AWS Marketplace. It takes 3 clicks to install &amp; it's still free!\n\nAuthoring instance data for ontology and SHACL models, exploring datasets and creating structured content has never been more accessible.\n\nhttps://t.co/gxc3r8UkMS" ;
-        sioc:id       "1589945877245808640" .
+<https://twitter.com/atomgraphhq/status/1535239790693699587>
+        a              sioc:Post ;
+        dct:created    "2022-06-10T12:37:44+00:00"^^xsd:dateTime ;
+        sioc:content   "Follow it on GitHub!\nhttps://t.co/pu5KkOoIOX" ;
+        sioc:id        "1535239790693699587" ;
+        sioc:reply_of  <https://twitter.com/atomgraphhq/status/1535211486582382593> .
 ```
 Improvements to the mapping query are welcome.
 
