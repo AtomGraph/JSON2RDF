@@ -113,11 +113,11 @@ public class JsonStreamRDFWriter
                 {
                     try
                     {
-                        rdfStream.triple(new Triple(subjectStack.getLast(), property,NodeFactory.createLiteralByValue(Integer.valueOf(parser.getString()), XSDDatatype.XSDint)));
+                        rdfStream.triple(new Triple(subjectStack.getLast(), property, NodeFactory.createLiteralByValue(Integer.valueOf(parser.getString()), XSDDatatype.XSDint)));
                     }
                     catch (NumberFormatException ex)
                     {
-                        rdfStream.triple(new Triple(subjectStack.getLast(), property,NodeFactory.createLiteralByValue(Float.valueOf(parser.getString()), XSDDatatype.XSDfloat)));
+                        rdfStream.triple(new Triple(subjectStack.getLast(), property, NodeFactory.createLiteralByValue(Float.valueOf(parser.getString()), XSDDatatype.XSDfloat)));
                     }
                 }
                 case VALUE_NULL ->
