@@ -63,7 +63,19 @@ public class JsonStreamRDFWriterTest
         
         Model expected = ModelFactory.createDefaultModel();
         expected.createResource().
-                addLiteral(expected.createProperty(getNS(), "key"), "val");
+            addLiteral(expected.createProperty(getNS(), "key"), "val");
+        
+        assertIsomorphic(json, expected);
+    }
+    
+    @Test
+    public void testKeyWithSpace()
+    {
+        String json = "{ \"some key\": \"val\" }";
+        
+        Model expected = ModelFactory.createDefaultModel();
+        expected.createResource().
+            addLiteral(expected.createProperty(getNS(), "some%20key"), "val");
         
         assertIsomorphic(json, expected);
     }
@@ -75,10 +87,10 @@ public class JsonStreamRDFWriterTest
         
         Model expected = ModelFactory.createDefaultModel();
         expected.createResource().
-                addLiteral(expected.createProperty(getNS(), "key"), "val1").
-                addLiteral(expected.createProperty(getNS(), "key"), "val2").
-                addLiteral(expected.createProperty(getNS(), "key"), "val3").
-                addLiteral(expected.createProperty(getNS(), "key"), "val4");
+            addLiteral(expected.createProperty(getNS(), "key"), "val1").
+            addLiteral(expected.createProperty(getNS(), "key"), "val2").
+            addLiteral(expected.createProperty(getNS(), "key"), "val3").
+            addLiteral(expected.createProperty(getNS(), "key"), "val4");
         
         assertIsomorphic(json, expected);
     }
@@ -90,10 +102,10 @@ public class JsonStreamRDFWriterTest
         
         Model expected = ModelFactory.createDefaultModel();
         expected.createResource().
-                addLiteral(expected.createProperty(getNS(), "before"), "val").
-                addProperty(expected.createProperty(getNS(), "obj"), expected.createResource().
-                        addLiteral(expected.createProperty(getNS(), "key"), "val")).
-                addLiteral(expected.createProperty(getNS(), "after"), "val");
+            addLiteral(expected.createProperty(getNS(), "before"), "val").
+            addProperty(expected.createProperty(getNS(), "obj"), expected.createResource().
+                addLiteral(expected.createProperty(getNS(), "key"), "val")).
+            addLiteral(expected.createProperty(getNS(), "after"), "val");
         
         assertIsomorphic(json, expected);
     }
@@ -105,13 +117,13 @@ public class JsonStreamRDFWriterTest
         
         Model expected = ModelFactory.createDefaultModel();
         expected.createResource().
-                addLiteral(expected.createProperty(getNS(), "array"), "before").
-                addProperty(expected.createProperty(getNS(), "array"), expected.createResource().
-                        addLiteral(expected.createProperty(getNS(), "key"), "val")).
-                addLiteral(expected.createProperty(getNS(), "array"), "middle").
-                addProperty(expected.createProperty(getNS(), "array"), expected.createResource().
-                        addLiteral(expected.createProperty(getNS(), "key1"), "val1")).
-                addLiteral(expected.createProperty(getNS(), "array"), "after");
+            addLiteral(expected.createProperty(getNS(), "array"), "before").
+            addProperty(expected.createProperty(getNS(), "array"), expected.createResource().
+                addLiteral(expected.createProperty(getNS(), "key"), "val")).
+            addLiteral(expected.createProperty(getNS(), "array"), "middle").
+            addProperty(expected.createProperty(getNS(), "array"), expected.createResource().
+                addLiteral(expected.createProperty(getNS(), "key1"), "val1")).
+            addLiteral(expected.createProperty(getNS(), "array"), "after");
         
         assertIsomorphic(json, expected);
     }
@@ -123,11 +135,11 @@ public class JsonStreamRDFWriterTest
         
         Model expected = ModelFactory.createDefaultModel();
         expected.createResource().
-                addLiteral(expected.createProperty(getNS(), "array"), "before").
-                addLiteral(expected.createProperty(getNS(), "array"), "val").
-                addProperty(expected.createProperty(getNS(), "array"), expected.createResource().
-                        addLiteral(expected.createProperty(getNS(), "key"), "val")).
-                addLiteral(expected.createProperty(getNS(), "array"), "after");
+            addLiteral(expected.createProperty(getNS(), "array"), "before").
+            addLiteral(expected.createProperty(getNS(), "array"), "val").
+            addProperty(expected.createProperty(getNS(), "array"), expected.createResource().
+                addLiteral(expected.createProperty(getNS(), "key"), "val")).
+            addLiteral(expected.createProperty(getNS(), "array"), "after");
         
         assertIsomorphic(json, expected);
     }
@@ -139,10 +151,10 @@ public class JsonStreamRDFWriterTest
         
         Model expected = ModelFactory.createDefaultModel();
         expected.createResource().
-                addLiteral(expected.createProperty(getNS(), "bool_true"), Boolean.TRUE).
-                addLiteral(expected.createProperty(getNS(), "bool_false"), Boolean.FALSE).
-                addLiteral(expected.createProperty(getNS(), "int"), Integer.valueOf("42")).
-                addLiteral(expected.createProperty(getNS(), "float"), Float.valueOf("66.6"));
+            addLiteral(expected.createProperty(getNS(), "bool_true"), Boolean.TRUE).
+            addLiteral(expected.createProperty(getNS(), "bool_false"), Boolean.FALSE).
+            addLiteral(expected.createProperty(getNS(), "int"), Integer.valueOf("42")).
+            addLiteral(expected.createProperty(getNS(), "float"), Float.valueOf("66.6"));
         
         assertIsomorphic(json, expected);
     }

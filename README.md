@@ -13,7 +13,7 @@ SPARQL is an inherently more flexible RDF mapping mechanism than JSON-LD `@conte
 
     mvn clean install
 
-That should produce an executable JAR file `target/json2rdf-1.0.1-jar-with-dependencies.jar` in which dependency libraries will be included.
+That should produce an executable JAR file `target/json2rdf-jar-with-dependencies.jar` in which dependency libraries will be included.
 
 ## Usage
 
@@ -50,7 +50,7 @@ JSON data in [`ordinary-json-document.json`](https://www.w3.org/TR/json-ld11/#in
 Java execution from shell:
 
 ```bash
-cat ordinary-json-document.json | java -jar json2rdf-1.0.1-jar-with-dependencies.jar https://localhost/ | riot --formatted=TURTLE
+cat ordinary-json-document.json | java -jar json2rdf-jar-with-dependencies.jar https://localhost/ | riot --formatted=TURTLE
 ```
 
 Alternatively, Docker execution from shell:
@@ -137,7 +137,7 @@ JSON data in [`city-distances.json`](https://www.w3.org/TR/xslt-30/#json-to-xml-
 
 Java execution from shell:
 ```bash
-cat city-distances.json | java -jar json2rdf-1.0.1-jar-with-dependencies.jar https://localhost/ | riot --formatted=TURTLE
+cat city-distances.json | java -jar json2rdf-jar-with-dependencies.jar https://localhost/ | riot --formatted=TURTLE
 ```
 
 Alternatively, Docker execution from shell:
