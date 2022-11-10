@@ -1,4 +1,4 @@
-FROM maven:3.6.0-jdk-8
+FROM maven:3.8.4-openjdk-17 as maven
 
 LABEL maintainer="martynas@atomgraph.com"
 
