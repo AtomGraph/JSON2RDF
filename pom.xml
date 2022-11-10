@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.atomgraph.etl.json</groupId>
     <artifactId>json2rdf</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4-SNAPSHOT</version>
     <packaging>jar</packaging>
     
     <name>JSON2RDF</name>
@@ -36,7 +36,7 @@
         <url>https://github.com/AtomGraph/JSON2RDF</url>
         <connection>scm:git:git://github.com/AtomGraph/JSON2RDF.git</connection>
         <developerConnection>scm:git:git@github.com:AtomGraph/JSON2RDF</developerConnection>
-      <tag>json2rdf-1.0.3</tag>
+      <tag>HEAD</tag>
   </scm>
     
     <dependencies>
