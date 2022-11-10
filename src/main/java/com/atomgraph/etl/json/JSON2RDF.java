@@ -31,7 +31,8 @@ import org.apache.jena.riot.system.StreamRDFLib;
 import picocli.CommandLine;
 
 /**
- *
+ * JSON2RDF conversion utility.
+ * 
  * @author Martynas Jusevičius {@literal <martynas@atomgraph.com>}
  */
 @CommandLine.Command(name = "json2rdf")

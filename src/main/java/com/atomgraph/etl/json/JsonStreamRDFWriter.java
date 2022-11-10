@@ -68,6 +68,7 @@ public class JsonStreamRDFWriter
     }
     
     /**
+     * Constructs converter.
      * 
      * @param parser JSON parser
      * @param rdfStream RDF stream
