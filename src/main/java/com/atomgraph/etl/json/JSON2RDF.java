@@ -32,7 +32,7 @@ import picocli.CommandLine;
 
 /**
  *
- * @author Martynas Jusevičius <martynas@atomgraph.com>
+ * @author Martynas Jusevičius {@literal <martynas@atomgraph.com>}
  */
 @CommandLine.Command(name = "json2rdf")
 public class JSON2RDF
@@ -50,6 +50,12 @@ public class JSON2RDF
     @CommandLine.Option(names = { "--output-charset" }, description = "Output charset (default: ${DEFAULT-VALUE})")
     private Charset outputCharset = StandardCharsets.UTF_8;
     
+    /**
+     * Entrypoint to the program.
+     * 
+     * @param args command line arguments
+     * @throws IOException 
+     */
     public static void main(String[] args) throws IOException
     {
         JSON2RDF json2rdf = new JSON2RDF(System.in, System.out);
@@ -66,12 +72,23 @@ public class JSON2RDF
         }
     }
     
-    public JSON2RDF(InputStream csvIn, OutputStream rdfOut)
+    /**
+     * Constructs converter from JSON input stream and RDF output stream.
+     * 
+     * @param jsonIn JSON input stream
+     * @param rdfOut RDF output stream
+     */
+    public JSON2RDF(InputStream jsonIn, OutputStream rdfOut)
     {
-        this.jsonIn = csvIn;
+        this.jsonIn = jsonIn;
         this.rdfOut = rdfOut;
     }
     
+    /**
+     * Converts data by reading JSON stream and writing RDF stream.
+     * 
+     * @throws IOException 
+     */
     public void convert() throws IOException
     {
         if (jsonIn.available() == 0) throw new IllegalStateException("JSON input not provided");

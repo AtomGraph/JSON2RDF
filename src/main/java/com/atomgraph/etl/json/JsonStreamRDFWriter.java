@@ -32,9 +32,9 @@ import org.apache.jena.irix.IRIx;
 import org.apache.jena.riot.system.StreamRDF;
 
 /**
- * Converts JSON stream to RDF stream.
+ * Converts JSON input stream to RDF output stream.
  * 
- * @author Martynas Jusevičius <martynas@atomgraph.com>
+ * @author Martynas Jusevičius {@literal <martynas@atomgraph.com>}
  */
 public class JsonStreamRDFWriter
 {
@@ -43,16 +43,36 @@ public class JsonStreamRDFWriter
     private final StreamRDF rdfStream;
     private final IRIx base;
 
+    /**
+     * Constructs converter.
+     * 
+     * @param reader JSON input reader
+     * @param rdfStream RDF stream
+     * @param baseURI RDF base URI
+     */
     public JsonStreamRDFWriter(Reader reader, StreamRDF rdfStream, String baseURI)
     {
         this(Json.createParser(reader), rdfStream, baseURI);
     }
 
+    /**
+     * Constructs converter.
+     * 
+     * @param is JSON input stream
+     * @param rdfStream RDF stream
+     * @param baseURI RDF base URI
+     */
     public JsonStreamRDFWriter(InputStream is, StreamRDF rdfStream, String baseURI)
     {
         this(Json.createParser(is), rdfStream, baseURI);
     }
     
+    /**
+     * 
+     * @param parser JSON parser
+     * @param rdfStream RDF stream
+     * @param baseURI RDF base URI
+     */
     public JsonStreamRDFWriter(JsonParser parser, StreamRDF rdfStream, String baseURI)
     {
         this.parser = parser;
@@ -60,6 +80,9 @@ public class JsonStreamRDFWriter
         this.base = IRIx.create(baseURI);
     }
     
+    /**
+     * Executes conversion.
+     */
     public void convert()
     {
         getStreamRDF().start();
