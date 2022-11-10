@@ -197,7 +197,7 @@ You can [download your Twitter data](https://twitter.com/settings/download_your_
 To get the RDF output, save the following query as `tweets.rq`
 
 ```sparql
-BASE            <https://localhost/>
+BASE            <https://twitter.com/>
 PREFIX :        <#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 PREFIX sioc:    <http://rdfs.org/sioc/ns#>
@@ -216,7 +216,7 @@ CONSTRUCT
         :lang ?lang .
 
     BIND("atomgraphhq" AS ?username)
-    BIND(URI(CONCAT("https://twitter.com/", ?username, "/status/", ?id)) AS ?tweet)
+    BIND(URI(CONCAT(?username, "/status/", ?id)) AS ?tweet)
     BIND(SUBSTR(?created_at_string, 27, 4) AS ?year_string)
     BIND(SUBSTR(?created_at_string, 5, 3) AS ?month_string)
     BIND(SUBSTR(?created_at_string, 9, 2) AS ?day_string)
@@ -243,7 +243,7 @@ CONSTRUCT
 ```
 adjust your Twitter handle in the query string as `?username`, and then run this command:
 ```bash
-cat twitter.json | docker run -i -a stdin -a stdout -a stderr atomgraph/json2rdf https://localhost/ > tweets.nt && \
+cat twitter.json | docker run -i -a stdin -a stdout -a stderr atomgraph/json2rdf https://twitter.com/ > tweets.nt && \
     sparql --data tweets.nt --query tweets.rq
 ```
 Output sample:
