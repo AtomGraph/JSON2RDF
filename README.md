@@ -194,7 +194,7 @@ Turtle output
 
 You can [download your Twitter data](https://twitter.com/settings/download_your_data) which includes tweets in `tweets.js`. Remove the `window.YTD.tweets.part0 = ` string and save the rest as `tweets.json`.
 
-To get RDF output, save the following query as `tweets.rq`
+To get the RDF output, save the following query as `tweets.rq`
 
 ```sparql
 BASE            <https://localhost/>
