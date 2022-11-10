@@ -241,6 +241,13 @@ adjust your Twitter handle in the query string as `?username`, and then run this
 cat twitter.json | docker run -i -a stdin -a stdout -a stderr atomgraph/json2rdf https://localhost/ > tweets.nt && \
     sparql --data tweets.nt --query tweets.rq
 ```
+Output sample:
+```turtle
+<https://twitter.com/atomgraphhq/status/1590046748311191555>
+        dct:created   "2022-11-08T18:21:01+00:00"^^xsd:dateTime ;
+        sioc:content  "RT @atomgraphhq: This is big!💥 LinkedDataHub now available on the AWS Marketplace. It takes 3 clicks to install &amp; it's still free!\n\nAuthori…" ;
+        sioc:id       "1590046748311191555" .
+```
 Improvements to the mapping query are welcome.
 
 ## Performance
