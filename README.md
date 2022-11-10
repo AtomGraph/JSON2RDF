@@ -214,8 +214,7 @@ CONSTRUCT
 {
     ?tweet_obj :id ?id ;
         :created_at ?created_at_string ;
-        :full_text ?full_text ;
-        :lang ?lang .
+        :full_text ?full_text .
     OPTIONAL
     {
         ?tweet_obj :in_reply_to_status_id ?in_reply_to_status_id ;
