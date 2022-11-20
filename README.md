@@ -250,7 +250,7 @@ CONSTRUCT
 ```
 adjust your Twitter handle in the query string as `?username`, and then run this command:
 ```bash
-cat twitter.json | docker run -i -a stdin -a stdout -a stderr atomgraph/json2rdf https://twitter.com/ > tweets.nt && \
+cat tweets.json | docker run -i -a stdin -a stdout -a stderr atomgraph/json2rdf https://twitter.com/ > tweets.nt && \
     sparql --data tweets.nt --query tweets.rq
 ```
 Output sample:
