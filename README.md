@@ -55,7 +55,7 @@ cat ordinary-json-document.json | java -jar json2rdf-jar-with-dependencies.jar h
 
 Alternatively, Docker execution from shell:
 ```bash
-cat ordinary-json-document.json | docker run -i -a stdin -a stdout -a stderr atomgraph/json2rdf https://localhost/ | riot --formatted=TURTLE
+cat ordinary-json-document.json | docker run --rm -i -a stdin -a stdout -a stderr atomgraph/json2rdf https://localhost/ | riot --formatted=TURTLE
 ```
 
 Note that using Docker you need to [bind](https://docs.docker.com/engine/reference/commandline/run/#attach-to-stdinstdoutstderr--a) `stdin`/`stdout`/`stderr` streams.
