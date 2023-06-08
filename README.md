@@ -142,7 +142,7 @@ cat city-distances.json | java -jar json2rdf-jar-with-dependencies.jar https://l
 
 Alternatively, Docker execution from shell:
 ```bash
-cat city-distances.json | docker run -i -a stdin -a stdout -a stderr atomgraph/json2rdf https://localhost/ | riot --formatted=TURTLE
+cat city-distances.json | docker run --rm -i -a stdin -a stdout -a stderr atomgraph/json2rdf https://localhost/ | riot --formatted=TURTLE
 ```
 
 Turtle output
@@ -250,7 +250,7 @@ CONSTRUCT
 ```
 adjust your Twitter handle in the query string as `?username`, and then run this command:
 ```bash
-cat tweets.json | docker run -i -a stdin -a stdout -a stderr atomgraph/json2rdf https://twitter.com/ > tweets.nt && \
+cat tweets.json | docker run --rm -i -a stdin -a stdout -a stderr atomgraph/json2rdf https://twitter.com/ > tweets.nt && \
     sparql --data tweets.nt --query tweets.rq > tweets.ttl
 ```
 Output sample:
