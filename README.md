@@ -15,6 +15,10 @@ SPARQL is an inherently more flexible RDF mapping mechanism than JSON-LD `@conte
 
 That should produce an executable JAR file `target/json2rdf-jar-with-dependencies.jar` in which dependency libraries will be included.
 
+## Maven
+
+Each version is released to the Maven central repository as [`com.atomgraph.etl.json/json2rdf`](https://central.sonatype.com/artifact/com.atomgraph.etl.json/json2rdf)
+
 ## Usage
 
 The JSON data is read from `stdin`, the resulting RDF data is written to `stdout`.
