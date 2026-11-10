@@ -117,7 +117,7 @@ public class JsonStreamRDFWriter
                 {
                     Node subject = NodeFactory.createBlankNode();
                     // add triple with current array property, if any
-                    if (property != null && !subjectStack.isEmpty()) rdfStream.triple(new Triple(subjectStack.getLast(), property, subject));
+                    if (property != null && !subjectStack.isEmpty()) rdfStream.triple(Triple.create(subjectStack.getLast(), property, subject));
                     subjectStack.addLast(subject);
                 }
                 case END_OBJECT ->
@@ -126,22 +126,22 @@ public class JsonStreamRDFWriter
                     // restore previous array property, if there was any
                     if (!subjectStack.isEmpty() && arrayProperties.containsKey(subjectStack.getLast())) property = arrayProperties.get(subjectStack.getLast());
                 }
-                case VALUE_FALSE -> rdfStream.triple(new Triple(subjectStack.getLast(), property, NodeFactory.createLiteralByValue(Boolean.FALSE, XSDDatatype.XSDboolean)));
-                case VALUE_TRUE -> rdfStream.triple(new Triple(subjectStack.getLast(), property, NodeFactory.createLiteralByValue(Boolean.TRUE, XSDDatatype.XSDboolean)));
+                case VALUE_FALSE -> rdfStream.triple(Triple.create(subjectStack.getLast(), property, NodeFactory.createLiteralByValue(Boolean.FALSE, XSDDatatype.XSDboolean)));
+                case VALUE_TRUE -> rdfStream.triple(Triple.create(subjectStack.getLast(), property, NodeFactory.createLiteralByValue(Boolean.TRUE, XSDDatatype.XSDboolean)));
                 case KEY_NAME -> property = NodeFactory.createURI(base.resolve("#" + encodeUriComponent(parser.getString())).str());
                 case VALUE_STRING ->
                 {
-                    if (property != null) rdfStream.triple(new Triple(subjectStack.getLast(), property, NodeFactory.createLiteral(parser.getString())));
+                    if (property != null) rdfStream.triple(Triple.create(subjectStack.getLast(), property, NodeFactory.createLiteralString(parser.getString())));
                 }
                 case VALUE_NUMBER ->
                 {
                     try
                     {
-                        rdfStream.triple(new Triple(subjectStack.getLast(), property, NodeFactory.createLiteralByValue(Integer.valueOf(parser.getString()), XSDDatatype.XSDint)));
+                        rdfStream.triple(Triple.create(subjectStack.getLast(), property, NodeFactory.createLiteralByValue(Integer.valueOf(parser.getString()), XSDDatatype.XSDint)));
                     }
                     catch (NumberFormatException ex)
                     {
-                        rdfStream.triple(new Triple(subjectStack.getLast(), property, NodeFactory.createLiteralByValue(Float.valueOf(parser.getString()), XSDDatatype.XSDfloat)));
+                        rdfStream.triple(Triple.create(subjectStack.getLast(), property, NodeFactory.createLiteralByValue(Float.valueOf(parser.getString()), XSDDatatype.XSDfloat)));
                     }
                 }
                 case VALUE_NULL ->
